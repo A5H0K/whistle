@@ -22,6 +22,8 @@ import { Settings } from '../providers/providers';
 
 import { TranslateService } from '@ngx-translate/core'
 
+import { HomePage } from '../pages/home/home';
+
 @Component({
   template: `<ion-menu [content]="content">
     <ion-header>
@@ -42,11 +44,13 @@ import { TranslateService } from '@ngx-translate/core'
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  //rootPage = FirstRunPage;
+  rootPage = HomePage;
 
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
+    { title: 'Home' , component: HomePage },
     { title: 'Tutorial', component: TutorialPage },
     { title: 'Welcome', component: WelcomePage },
     { title: 'Tabs', component: TabsPage },
