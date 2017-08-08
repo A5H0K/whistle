@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Config } from 'ionic-angular';
+import { Platform, Nav, Config  } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -45,7 +45,8 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   //rootPage = FirstRunPage;
-  rootPage = HomePage;
+ rootPage = HomePage;
+
 
   @ViewChild(Nav) nav: Nav;
 
@@ -66,15 +67,27 @@ export class MyApp {
   ]
 
   constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
-    this.initTranslate();
+  this.initTranslate();
+  console.log("Inside the constructor");
+  setTimeout(() => { // AFTER 3 SECONDS YOU'LL SET THE ROOT PAGE TO THE DESIRED PAGE.
+    console.log("inside the timeOut");
+  //this.nav.setRoot(FirstRunPage);
+  this.nav.setRoot(TutorialPage);
+  }, 3000);
+
+  //this.nav.setRoot(FirstRunPage);
+ // splashScreen.show();
   }
 
   ionViewDidLoad() {
+    console.log("Inside the ionViewDidLoad");
+   
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+     // this.statusBar.styleDefault();
+    //  this.splashScreen.hide();
+    //this.splashScreen.show();
     });
   }
 
@@ -96,6 +109,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    //console.log("open page");
     this.nav.setRoot(page.component);
   }
 }

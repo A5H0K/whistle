@@ -5,6 +5,8 @@ import { WelcomePage } from '../welcome/welcome';
 
 import { TranslateService } from '@ngx-translate/core';
 
+import { Games } from '../../models/games';
+
 
 
 export interface Slide {
@@ -20,6 +22,7 @@ export interface Slide {
 export class TutorialPage {
   slides: Slide[];
   showSkip = true;
+  games: Games[];
 
   constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService) {
     translate.get(["TUTORIAL_SLIDE1_TITLE",
@@ -49,6 +52,16 @@ export class TutorialPage {
           }
         ];
       });
+  this.games = [{
+    game : "Cricket",
+    icon_url : "assets/img/cricket.jpeg"
+  },
+  {
+    game : "Basket Ball",
+  icon_url: "assets/img/basketBall.jpeg"
+  }
+
+  ];
   }
 
   startApp() {

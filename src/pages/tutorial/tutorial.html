@@ -1,12 +1,12 @@
-<ion-header no-shadow>
+<ion-header style="background: #9c27b0">
   <ion-navbar>
-    <ion-buttons end *ngIf="showSkip">
+    <!-- <ion-buttons end *ngIf="showSkip">
       <button ion-button (click)="startApp()" color="primary">{{ 'TUTORIAL_SKIP_BUTTON' | translate}}</button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce>
+<!-- <ion-content no-bounce>
   <ion-slides pager="true" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image" />
@@ -23,3 +23,16 @@
     </ion-slide>
   </ion-slides>
 </ion-content>
+ -->
+<ion-content>
+  <ion-list>
+  <button ion-item *ngFor="let game of games" (click)="goToDetails(game.game)">
+      <ion-avatar item-left>
+        <img [src]="game.icon_url">
+      </ion-avatar>
+      <h2>{{ game.game }}</h2>
+      <!-- <ion-icon name="arrow-forward" item-right></ion-icon> -->
+    </button>
+  </ion-list>
+</ion-content>
+
